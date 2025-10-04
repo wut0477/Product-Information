@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แก้ไขข้อมูล</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>แก้ไขข้อมูลเครื่องมือช่าง</h1>
+    <form method="POST">
+        {% set fields = ['no','doc_no','date','item_code','description','customer','process','size','part_weight','material','material_name','mat_use','master_batch','masterbatch_name','masterBatch_use','color','sm','handle','bag','packing_detail','label','insert_logo','carton_box','eco','remark'] %}
+        {% for i in range(fields|length) %}
+            <label>{{ fields[i] }}</label>
+            <input type="text" name="{{ fields[i] }}" value="{{ data[i+1] }}" required>
+        {% endfor %}
+        <button type="submit" class="btn">บันทึกการแก้ไข</button>
+        <a href="{{ url_for('index') }}" class="btn-cancel">ยกเลิก</a>
+    </form>
+</div>
+</body>
+</html>
